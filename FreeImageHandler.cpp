@@ -15,6 +15,10 @@ QT_BEGIN_NAMESPACE
 // NOTE: this is unclear from FreeImage manual, but interface of FreeImageIO
 // is modeled after fread, fwrite, fseek, ftell.
 
+#ifdef __FreeBSD__
+#define __stdcall __attribute__((__stdcall__))
+#endif
+
 static  unsigned __stdcall
 ReadProc(void *buffer, unsigned size, unsigned count, fi_handle handle)
 {
